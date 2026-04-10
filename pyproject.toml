@@ -1,0 +1,52 @@
+[project]
+name = "smpl-env-experiments"
+version = "0.1.0"
+description = "Experiments on SMPL environment"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "casadi",
+    "d3rlpy>=2",
+    "hashfile>=2.1.5",
+    "mzutils>=0.2022",
+    "numpy==1.23.5",
+    "protobuf==3.20.2",
+    "pydantic<2",
+    "tensorboard>=2.11.2",
+    "wandb>=0.18.5",
+    "fastodeint",
+    "pensimpy",
+    "mpctools",
+    "scikit-learn>=1.6.1",
+    "pygame>=2.6.1",
+    "minari>=0.5.2",
+    "huggingface-hub>=0.28.1",
+    "gymnasium-robotics>=1.2.4",
+    "pyqt6>=6.8.1",
+    "d3rlpy-patch",
+    "smpl",
+    "hydra-core>=1.3.2",
+    "sippy>=2.2.1",
+    "jinja2>=3.1.6",
+    "seaborn>=0.13.2",
+    "numba>=0.60.0",
+    "joblib>=1.4.2",
+    "h5py>=3.13.0",
+]
+
+[tool.uv]
+index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+config-settings = { editable_mode = "compat" }
+
+[tool.uv.sources]
+fastodeint = { path = "./extern-lib/fastodeint/" }
+pensimpy = { path = "./extern-lib/PenSimPy/" }
+mpctools = { path = "./extern-lib/mpctools_casadi/" }
+d3rlpy-patch = { workspace = true }
+smpl = { path = "extern-lib/smpl", editable = true }
+
+[tool.uv.workspace]
+members = ["patches/d3rlpy-patch"]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
